@@ -30,6 +30,38 @@ public class Parque {
         matriculas.set(plaza, matricula);
     }
 
+    public int salida(String matricula) throws parqueoException{
+
+        if (!matriculas.contains(matricula)) throw new parqueoException("matricula no existente ",matricula);
+        int plaza = matriculas.indexOf(matricula);
+        matriculas.set(plaza, null);
+        return plaza;
+    }
+
+    public int getPalzasTotales(){
+        return matriculas.size();
+    }
+
+    public int getPlazasLibres(){
+        return Collections.frequency(matriculas,null);
+    }
+    public int getPlazasOcupadas(){
+        return getPalzasTotales() - getPlazasLibres();
+    }
+
+    @Override
+    public String toString(){
+        String cadena = "Parquieado "+ nombre + "\n";
+        cadena+="----------------------------\n";
+
+        for (int i = 0; i < matriculas.size(); i++) {
+            cadena += "Plaza "+i+": ";
+            cadena += (matriculas.get(i)==null)? " vacio ":matriculas.get(i);
+            cadena += "\n";
+        }
+        cadena += "-----------------------\n";
+        return cadena;
+    }
 }
 
 
