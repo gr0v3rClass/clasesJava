@@ -3,5 +3,5 @@ public interface EsLiquido {
     public double getVolumen();
     public void setTipoEnvase(String env);
 
-    public void getTipoEnvase();
+    public String getTipoEnvase();
 }
